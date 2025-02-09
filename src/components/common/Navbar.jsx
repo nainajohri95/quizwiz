@@ -3,13 +3,12 @@ import { Link } from 'react-router-dom';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 
-const Navbar = () => {
-  const [darkMode, setDarkMode] = useState(false);
+import { useTheme } from '../../theme-context';
 
-  const handleThemeChange = () => {
-    setDarkMode(!darkMode);
-    console.log(darkMode ? 'Switched to Light Mode' : 'Switched to Dark Mode');
-  };
+const Navbar = () => {
+
+  const {theme, toggleTheme} = useTheme()
+  
 
   return (
     <nav className="bg-gradient-to-r from-blue-800 via-blue-600 to-blue-500 shadow-lg py-4 px-8 flex items-center justify-between">
@@ -32,35 +31,13 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="flex items-center space-x-4 ml-6">
-        {darkMode ? (
-          <LightModeOutlinedIcon
-            onClick={handleThemeChange}
-            sx={{
-              fontSize: 32,
-              color: 'yellow', 
-              cursor: 'pointer',
-              transition: 'transform 0.3s',
-              '&:hover': {
-                transform: 'scale(1.1)', 
-              },
-            }}
-          />
-        ) : (
-          <DarkModeOutlinedIcon
-            onClick={handleThemeChange}
-            sx={{
-              fontSize: 32,
-              color: 'white', 
-              cursor: 'pointer',
-              transition: 'transform 0.3s',
-              '&:hover': {
-                transform: 'scale(1.1)', 
-              },
-            }}
-          />
-        )}
-      </div>
+
+      <button
+        onClick={toggleTheme}
+        className="p-2 rounded  dark:bg-gray-700 text-gray-800 dark:text-white flex items-center"
+      >
+        {theme === "dark" ? <LightModeOutlinedIcon  className="text-yellow-400 dark:text-yellow-300 w-9 h-9"/> : <DarkModeOutlinedIcon className='text-white w-9 h-9'/>}
+      </button>
     </nav>
   );
 };

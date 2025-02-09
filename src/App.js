@@ -5,9 +5,11 @@ import Landing from './components/Landing';
 import Game from './components/game/Game';
 import LeaderBoard from './components/game/LeaderBoard';
 import About from './components/common/About';
+import { ThemeProvider } from './theme-context';
 
 function App() {
   return (
+    <ThemeProvider>
     <BrowserRouter>
     <div>
       <Navbar/>
@@ -22,7 +24,8 @@ function App() {
       </main>
     </div>
     </BrowserRouter>
-  );
+    </ThemeProvider>
+  )
 }
 
 export default App;

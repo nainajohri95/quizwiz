@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --heading-color: #444444;
+}
+
+[data-theme="dark"] {
+    --bg-color: #333333;
+    --text-color: #ffffff;
+    --heading-color: #dddddd;
+}
+
+/* Apply Variables to Body */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
